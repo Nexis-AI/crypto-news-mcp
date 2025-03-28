@@ -7,9 +7,9 @@ from pydantic import Field
 
 
 class CoindeskNewsPage(BaseModel):
-    title: str
+    title: str | None = Field(default=None)
     subtitle: str | None = Field(default=None)
-    content: str
+    content: str | None = Field(default=None)
     author: str | None = Field(default=None)
     published_at: datetime | None = Field(default=None)
     updated_at: datetime | None = Field(default=None)

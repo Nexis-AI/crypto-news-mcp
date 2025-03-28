@@ -3,8 +3,8 @@ from typing import Final
 import feedparser
 from mcp.server.fastmcp import FastMCP
 
-from coindesk_mcp.page import extract_newspage
-from coindesk_mcp.utils import fetch_text_from_url
+from mcp_server_coindesk.page import extract_newspage
+from mcp_server_coindesk.utils import fetch_text_from_url
 
 COINDESK_RSS_URL: Final[str] = "https://www.coindesk.com/arc/outboundfeeds/rss"
 
@@ -32,7 +32,7 @@ Rate limits and performance considerations:
 """
 
 
-mcp = FastMCP("MCP Server Coindesk", instructions=INSTRUCTIONS)
+mcp = FastMCP("MCP Server Coindesk", instructions=INSTRUCTIONS, log_level="ERROR")
 
 
 @mcp.tool()
@@ -82,3 +82,7 @@ async def recent_news() -> str:
     return "\n---\n".join(
         f"{entry['title']}\n{entry['link']}\n{entry['updated']}\n{entry['summary']}" for entry in feed["entries"]
     )
+
+
+def main() -> None:
+    mcp.run()

@@ -1,5 +1,5 @@
 [project]
-name = "coindesk-mcp"
+name = "mcp-server-coindesk"
 version = "0.1.0"
 description = ""
 readme = "README.md"
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-coindesk-mcp = "coindesk_mcp.cli:main"
+mcp-server-coindesk = "mcp_server_coindesk.server:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -23,10 +23,10 @@ build-backend = "hatchling.build"
 [dependency-groups]
 dev = [
     "mypy>=1.13.0",
- "pytest>=8.3.3",
- "pytest-cov>=6.0.0",
- "ruff>=0.7.3",
- "types-python-dateutil>=2.9.0.20241206",
+    "pytest>=8.3.3",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.7.3",
+    "types-python-dateutil>=2.9.0.20241206",
 ]
 
 [tool.ruff]

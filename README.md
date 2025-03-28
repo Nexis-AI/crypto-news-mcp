@@ -4,6 +4,21 @@
 uv run mcp dev src/coindesk_mcp/server.py
 ```
 
+```json
+{
+  "mcpServers": {
+    "mcp-server-coindesk": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/narumiruna/mcp-server-coindesk",
+        "mcp-server-coindesk"
+      ]
+    }
+  }
+}
+```
+
 ## Components
 
 ### Tools

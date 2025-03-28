@@ -9,7 +9,30 @@ from coindesk_mcp.utils import fetch_text_from_url
 COINDESK_RSS_URL: Final[str] = "https://www.coindesk.com/arc/outboundfeeds/rss"
 
 
-mcp = FastMCP("MCP Server Coindesk")
+INSTRUCTIONS: Final[str] = """
+This MCP server provides access to CoinDesk cryptocurrency and blockchain news content.
+
+Available tools:
+- list_rss_feed: Fetches the latest news articles from CoinDesk's RSS feed
+- get_news_content: Retrieves the full content of a specific news article using its URL
+
+Usage guidelines:
+1. Use list_rss_feed to obtain recent headlines, links, timestamps, and article summaries
+2. Use get_news_content with an article URL to fetch the complete article content
+3. Process and present the news data according to your application requirements
+
+Data handling:
+- The RSS feed data includes article titles, links, publication timestamps, and summaries
+- Full article content may contain text, embedded media references, and formatting elements
+- Citation is recommended when republishing any content, referencing CoinDesk as the source
+
+Rate limits and performance considerations:
+- Implement appropriate caching mechanisms for frequently accessed content
+- Avoid excessive requests to the underlying CoinDesk services
+"""
+
+
+mcp = FastMCP("MCP Server Coindesk", instructions=INSTRUCTIONS)
 
 
 @mcp.tool()

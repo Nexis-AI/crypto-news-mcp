@@ -14,11 +14,11 @@ This MCP server provides access to CoinDesk cryptocurrency and blockchain news c
 
 Available tools:
 - list_rss_feed: Fetches the latest news articles from CoinDesk's RSS feed
-- get_news_content: Retrieves the full content of a specific news article using its URL
+- read_news: Retrieves the full content of a specific news article using its URL
 
 Usage guidelines:
 1. Use list_rss_feed to obtain recent headlines, links, timestamps, and article summaries
-2. Use get_news_content with an article URL to fetch the complete article content
+2. Use read_news with an article URL to fetch the complete article content
 3. Process and present the news data according to your application requirements
 
 Data handling:
@@ -36,22 +36,21 @@ mcp = FastMCP("MCP Server Coindesk", instructions=INSTRUCTIONS)
 
 
 @mcp.tool()
-async def get_news_content(url: str) -> str:
+async def read_news(url: str) -> str:
     """
-    Fetches and extracts the content of a news article from a given URL.
+    Retrieves news content from a specified URL.
 
-    This asynchronous function retrieves the HTML content from the specified URL,
-    extracts the news page content using the extract_newspage function,
-    and returns the extracted content as a string.
+    This function fetches the HTML content from the given URL, extracts the news
+    content from the HTML, and returns it as a string.
 
     Args:
-        url (str): The URL of the news article to fetch and extract.
+        url (str): The URL of the news page to read.
 
     Returns:
-        str: The extracted content of the news article as a string.
+        str: The extracted news content as a string.
 
     Raises:
-        Any exceptions that might be raised by fetch_text_from_url or extract_newspage.
+        Any exceptions that might be raised by the fetch_text_from_url or extract_newspage functions.
     """
     html = await fetch_text_from_url(url)
     newspage = extract_newspage(html)
@@ -59,7 +58,7 @@ async def get_news_content(url: str) -> str:
 
 
 @mcp.tool()
-async def list_rss_feed() -> str:
+async def list_recent_news() -> str:
     """
     Fetches and parses the CoinDesk RSS feed, returning a formatted string of feed entries.
 

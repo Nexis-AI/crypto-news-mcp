@@ -3,8 +3,8 @@ from typing import Final
 import feedparser
 from mcp.server.fastmcp import FastMCP
 
-from mcp_server_coindesk.page import extract_newspage
-from mcp_server_coindesk.utils import fetch_text_from_url
+from cryptonewsmcp.page import extract_newspage
+from cryptonewsmcp.utils import fetch_text_from_url
 
 COINDESK_RSS_URL: Final[str] = "https://www.coindesk.com/arc/outboundfeeds/rss"
 

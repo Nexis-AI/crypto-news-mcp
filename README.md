@@ -1,18 +1,21 @@
-# Coindesk MCP
+# WIP: Crypto News MCP Server
 
-```sh
-uv run mcp dev src/coindesk_mcp/server.py
-```
+## TODO
+
+- [x] coindesk
+- [ ] [decrypt](https://decrypt.co/)
+
+## Usage
 
 ```json
 {
   "mcpServers": {
-    "mcp-server-coindesk": {
+    "cryptonewsmcp": {
       "command": "uvx",
       "args": [
         "--from",
-        "git+https://github.com/narumiruna/mcp-server-coindesk",
-        "mcp-server-coindesk"
+        "git+https://github.com/narumiruna/crypto-news-mcp",
+        "cryptonewsmcp"
       ]
     }
   }

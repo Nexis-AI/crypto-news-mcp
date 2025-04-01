@@ -1,5 +1,5 @@
 [project]
-name = "mcp-server-coindesk"
+name = "cryptonewsmcp"
 version = "0.1.0"
 description = ""
 readme = "README.md"
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-mcp-server-coindesk = "mcp_server_coindesk.server:main"
+cryptonewsmcp = "cryptonewsmcp.server:main"
 
 [build-system]
 requires = ["hatchling"]

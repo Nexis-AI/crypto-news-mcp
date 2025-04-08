@@ -2,30 +2,12 @@ from datetime import datetime
 
 import dateutil.parser
 from bs4 import BeautifulSoup
-from pydantic import BaseModel
 from pydantic import Field
 
+from .types import News
 
-class CoindeskNewsPage(BaseModel):
-    """
-    Structured representation of a CoinDesk news article page.
 
-    Contains extracted metadata and content from a CoinDesk article including
-    title, subtitle, main content, author information, and publication timestamps.
-
-    Attributes:
-        title (str | None): Main headline of the article
-        subtitle (str | None): Secondary headline or description
-        content (str | None): Full text content of the article
-        author (str | None): Name of the article's author
-        published_at (datetime | None): Initial publication timestamp
-        updated_at (datetime | None): Last update timestamp if available
-    """
-
-    title: str | None = Field(default=None)
-    subtitle: str | None = Field(default=None)
-    content: str | None = Field(default=None)
-    author: str | None = Field(default=None)
+class CoindeskNewsPage(News):
     published_at: datetime | None = Field(default=None)
     updated_at: datetime | None = Field(default=None)
 

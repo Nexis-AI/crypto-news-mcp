@@ -9,9 +9,11 @@ class News(BaseModel):
 
     def __str__(self) -> str:
         return "\n".join(
-            f"# {self.title}",
-            self.subtitle,
-            f"Author: {self.author}",
-            "## Content",
-            self.content,
+            [
+                f"# {self.title}",
+                self.subtitle,
+                f"Author: {self.author}",
+                "## Content",
+                self.content,
+            ]
         )

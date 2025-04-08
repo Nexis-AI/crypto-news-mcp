@@ -5,8 +5,6 @@ import feedparser
 from markdownify import markdownify as md
 from mcp.server.fastmcp import FastMCP
 
-from cryptonewsmcp.coindesk import extract_coindesk_news
-from cryptonewsmcp.decrypt import extract_news_from_decrypt
 from cryptonewsmcp.utils import fetch_text_from_url
 
 RSS_URLS = {

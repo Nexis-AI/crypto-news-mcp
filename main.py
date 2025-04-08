@@ -77,7 +77,7 @@ async def main() -> None:
 
             with logfire.span("run"):
                 result = await Runner.run(agent, input=messages)
-                logger.debug("New items: {new_items}", new_items=result.new_items)
+                logger.info("New items: {new_items}", new_items=result.new_items)
                 logger.info("Result: {result}", result=result.final_output)
 
             messages = result.to_input_list()

@@ -40,18 +40,11 @@ async def read_news(url: str) -> str:
         url: Article URL to retrieve
 
     Returns:
-        Formatted article content
+        Markdown-formatted article content
     """
     html = await fetch_text_from_url(url)
-    if url.startswith("https://www.coindesk.com/"):
-        news = extract_coindesk_news(html)
-        return str(news)
-    elif url.startswith("https://decrypt.co/"):
-        news = extract_news_from_decrypt(html)
-        return str(news)
-    else:
-        markdown = md(html, strip=["a", "img"])
-        return markdown
+    markdown = md(html, strip=["a", "img"])
+    return markdown
 
 
 @mcp.tool()

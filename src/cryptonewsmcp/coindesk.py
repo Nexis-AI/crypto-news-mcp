@@ -7,7 +7,7 @@ from pydantic import Field
 from .types import News
 
 
-class CoindeskNewsPage(News):
+class CoindeskNews(News):
     published_at: datetime | None = Field(default=None)
     updated_at: datetime | None = Field(default=None)
 
@@ -107,7 +107,7 @@ def extract_author(soup: BeautifulSoup) -> str | None:
     return result.get_text().strip()
 
 
-def extract_newspage(html: str) -> CoindeskNewsPage:
+def extract_coindesk_news(html: str) -> CoindeskNews:
     """
     Processes HTML content to extract structured news article information.
 
@@ -124,7 +124,7 @@ def extract_newspage(html: str) -> CoindeskNewsPage:
 
     published_at, updated_at = extract_published_at(soup)
 
-    return CoindeskNewsPage(
+    return CoindeskNews(
         title=extract_title(soup),
         subtitle=extract_subtitle(soup),
         content=extract_content(soup),

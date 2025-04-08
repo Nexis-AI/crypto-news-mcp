@@ -1,13 +1,18 @@
 from typing import Final
+from typing import Literal
 
 import feedparser
+from markdownify import markdownify as md
 from mcp.server.fastmcp import FastMCP
 
-from cryptonewsmcp.page import extract_newspage
+from cryptonewsmcp.coindesk import extract_coindesk_news
+from cryptonewsmcp.decrypt import extract_news_from_decrypt
 from cryptonewsmcp.utils import fetch_text_from_url
 
-COINDESK_RSS_URL: Final[str] = "https://www.coindesk.com/arc/outboundfeeds/rss"
-
+RSS_URLS = {
+    "coindesk": "https://www.coindesk.com/arc/outboundfeeds/rss",
+    "decrypt": "https://decrypt.co/feed",
+}
 
 INSTRUCTIONS: Final[str] = """
 This MCP server provides access to CoinDesk cryptocurrency and blockchain news content.
@@ -56,12 +61,19 @@ async def read_news(url: str) -> str:
         Exception: If article parsing encounters errors
     """
     html = await fetch_text_from_url(url)
-    newspage = extract_newspage(html)
-    return str(newspage)
+    if url.startswith("https://www.coindesk.com/"):
+        news = extract_coindesk_news(html)
+        return str(news)
+    elif url.startswith("https://decrypt.co/"):
+        news = extract_news_from_decrypt(html)
+        return str(news)
+    else:
+        markdown = md(html, strip=["a", "img"])
+        return markdown
 
 
 @mcp.tool()
-async def recent_news() -> str:
+async def recent_news(site: Literal["coindesk", "decrypt"]) -> str:
     """
     Retrieves the latest cryptocurrency and blockchain news articles from CoinDesk's RSS feed.
 
@@ -77,7 +89,12 @@ async def recent_news() -> str:
         HTTPStatusError: If the RSS feed request fails
         Exception: If RSS parsing encounters errors
     """
-    text = await fetch_text_from_url(COINDESK_RSS_URL)
+
+    url = RSS_URLS.get(site)
+    if url is None:
+        raise ValueError(f"Unsupported site: {site}")
+
+    text = await fetch_text_from_url(url)
     feed = feedparser.parse(text)
     return "\n---\n".join(
         f"{entry['title']}\n{entry['link']}\n{entry['updated']}\n{entry['summary']}" for entry in feed["entries"]

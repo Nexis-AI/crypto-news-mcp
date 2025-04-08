@@ -2,7 +2,7 @@ import json
 
 from bs4 import BeautifulSoup
 
-from ..types import News
+from .types import News
 
 
 def extract_news_from_decrypt(html: str) -> News:

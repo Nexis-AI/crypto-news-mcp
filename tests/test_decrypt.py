@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from cryptonewsmcp.decrypt.news import extract_news_from_decrypt
+from cryptonewsmcp.decrypt import extract_news_from_decrypt
 
 
 def test_extract_news_from_decrypt() -> None:

@@ -3,7 +3,7 @@
 ## TODO
 
 - [x] coindesk
-- [ ] [decrypt](https://decrypt.co/)
+- [x] [decrypt](https://decrypt.co/)
 
 ## Usage
 
@@ -27,10 +27,12 @@
 ### Tools
 
 - recent_news
-  - Retrieve recent news articles from Coindesk RSS feed
-  - Returns a list of articles with title, link, and description
-- read_news
-  - Read the news article from url
+  - Fetches latest crypto news from specified site
   - Input:
-    - url: URL of the Coindesk article
-  - Returns the article title, author, and content
+    - site: Source site ("coindesk" or "decrypt")
+  - Returns formatted list of news entries with titles, links, dates and summaries
+- read_news
+  - Gets article content from URL
+  - Input:
+    - url: Article URL to retrieve
+  - Returns formatted article content

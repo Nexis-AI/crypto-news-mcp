@@ -7,6 +7,21 @@
 
 ## Usage
 
+From PyPI
+
+```json
+{
+  "mcpServers": {
+    "cryptonewsmcp": {
+      "command": "uvx",
+      "args": ["cryptonewsmcp"]
+    }
+  }
+}
+```
+
+From GitHub
+
 ```json
 {
   "mcpServers": {

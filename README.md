@@ -32,7 +32,7 @@
     - site: Source site ("coindesk" or "decrypt")
   - Returns formatted list of news entries with titles, links, dates and summaries
 - read_news
-  - Gets article content from URL
+  - Fetches article HTML from URL and converts it to Markdown
   - Input:
     - url: Article URL to retrieve
-  - Returns formatted article content
+  - Returns Markdown-formatted article content

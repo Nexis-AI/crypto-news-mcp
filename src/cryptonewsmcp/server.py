@@ -17,11 +17,11 @@ Crypto news MCP server for CoinDesk and Decrypt content.
 
 Tools:
 - recent_news: Fetches latest news from RSS feeds
-- read_news: Gets full article content from URL
+- read_news: Fetches article HTML from URL and converts it to Markdown
 
 Usage:
 1. Get headlines with recent_news
-2. Read full articles with read_news
+2. Get and convert articles with read_news
 3. Cite sources when republishing
 """
 
@@ -32,7 +32,7 @@ mcp = FastMCP("MCP Server Coindesk", instructions=INSTRUCTIONS, log_level="ERROR
 @mcp.tool()
 async def read_news(url: str) -> str:
     """
-    Gets article content from URL.
+    Fetches article HTML from URL and converts it to Markdown.
 
     Args:
         url: Article URL to retrieve

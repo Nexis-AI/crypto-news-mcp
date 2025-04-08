@@ -1,4 +1,4 @@
-# WIP: Crypto News MCP Server
+# Crypto News MCP Server
 
 ## TODO
 

@@ -9,6 +9,7 @@ from agents import Agent
 from agents import ModelSettings
 from agents import OpenAIChatCompletionsModel
 from agents import Runner
+from agents import TResponseInputItem
 from agents import set_tracing_disabled
 from agents.mcp import MCPServerStdio
 from agents.mcp import MCPServerStdioParams
@@ -69,7 +70,7 @@ async def main() -> None:
             mcp_servers=[mcp_server],
         )
 
-        messages = []
+        messages: list[TResponseInputItem] = []
         while True:
             text = input("Enter your message: ")
             messages.append({"role": "user", "content": text})

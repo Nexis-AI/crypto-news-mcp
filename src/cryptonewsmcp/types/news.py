@@ -11,9 +11,9 @@ class News(BaseModel):
         return "\n".join(
             [
                 f"# {self.title}",
-                self.subtitle,
+                f"{self.subtitle}",
                 f"Author: {self.author}",
                 "## Content",
-                self.content,
+                f"{self.content}",
             ]
         )

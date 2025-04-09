@@ -1,11 +1,19 @@
 # Crypto News MCP Server
 
-## TODO
-
-- [x] coindesk
-- [x] [decrypt](https://decrypt.co/)
-
 ## Usage
+
+From Docker
+
+```json
+{
+  "mcpServers": {
+    "cryptonewsmcp": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "narumi/crypto-news-mcp"]
+    }
+  }
+}
+```
 
 From PyPI
 
